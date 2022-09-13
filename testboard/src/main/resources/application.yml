@@ -1,0 +1,43 @@
+thymeleaf:
+  mode: HTML5
+  suffix: .html
+  cache: false
+  prefix: classpath:templates/
+  check-template-location: true
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mariadb://062:centerlink:kr:3306/callcenter?autoReconnect=true
+      username: root
+      password: '#centerlink!'
+      driver-class-name: org.mariadb.jdbc.Driver
+      auto-commit: false
+      maximum-pool-size: 36
+      connection-timeout: 5000
+      validation-timeout: 5000
+      connection-test-query: select 1
+      idle-timeout: 10000
+      max-lifetime: 580000
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: com.cp.madrid.config.MariaDialect
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: info
+    org.hibernate.type: info
+    com.example.testboard : debug
+    org:
+      springframework:
+        security:
+          web: debug
+
+
+
